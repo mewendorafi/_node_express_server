@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
-const { toJSON, paginate } = require('../plugins');
 const bcrypt = require('bcryptjs');
+const validator = require('validator');
+const { Schema, model } = require('mongoose');
+const { toJSON, paginate } = require('../plugins');
 const { ROLES } = require('../../config/roles.config');
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
 	{
 		username: {
 			type: String,
@@ -18,22 +18,22 @@ const userSchema = new mongoose.Schema(
 			trim: true,
 			lowercase: true,
 			validate(value) {
-        if (!validator.isEmail(value)) {
-          throw new Error('Invalid email');
-        }
-      },
+				if (!validator.isEmail(value)) {
+					throw new Error('Invalid email');
+				}
+			},
 		},
 		password: {
 			type: String,
 			required: true,
 			minLength: 8,
 			trim: true,
-			private: true, // used by "toJSON" plugin
+			private: true, // used by plugin toJSON
 			validate(value) {
-        if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
-          throw new Error('Password must contain at least one letter and one number');
-        }
-      },
+				if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
+					throw new Error('Password must contain at least one letter and one number');
+				}
+			},
 		},
 		role: {
 			type: String,
@@ -46,12 +46,13 @@ const userSchema = new mongoose.Schema(
 		},
 	},
 	{
-		timestamps: true, // mongoose option, auto-assigns "createdAt" and "updatedAt" fields on document creation (Date type).
+		timestamps: true, // mongoose option to auto-assign "createdAt" and "updatedAt" fields on document
 	}
 );
 
-// Plugin that converts mongoose to JSON
+// schema plugin to convert mongoose to JSON
 userSchema.plugin(toJSON);
+// pagination feature on requests
 userSchema.plugin(paginate);
 
 userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
@@ -73,6 +74,4 @@ userSchema.pre('save', async function (next) {
 	next();
 });
 
-const User = mongoose.model('users', userSchema);
-
-module.exports = User;
+module.exports = model('users', userSchema);

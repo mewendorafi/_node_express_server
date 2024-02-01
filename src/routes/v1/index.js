@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const authRoute = require('./auth.route.js');
-const userRoute = require('./user.route.js');
+const authRouter = require('./auth.route.js');
+const usersRouter = require('./user.route.js');
 
 // Index View
 router.get('/', async (req, res) => {
@@ -25,13 +25,13 @@ router.get('/', async (req, res) => {
 const DEFAULT_ROUTES = [
 	{
 		path: '/auth',
-		route: authRoute,
+		route: authRouter,
 	},
 	{
 		path: '/users',
-		route: userRoute,
+		route: usersRouter,
 	},
-	// extensible ...
+	// extend ...
 ];
 
 DEFAULT_ROUTES.forEach(route => {

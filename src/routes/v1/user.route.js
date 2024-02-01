@@ -21,5 +21,6 @@ router
 	.route('/:uid')
 	.get(auth('getUsers'), user.get)
 	.patch(auth('manageUsers'), user.update)
-	.delete(auth('manageUsers'), user.destroy);
+	.delete(auth('manageUsers'), user.remove);
+
 module.exports = router;

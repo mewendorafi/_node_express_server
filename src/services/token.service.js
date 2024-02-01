@@ -1,10 +1,10 @@
 // const http = require('http-status');
 // const ApiError = require('../utils/ApiError');
 // const userService = require('./user.service');
-const jwt = require('jsonwebtoken');
 const moment = require('moment');
-const Token = require('../database/models/token.model');
+const jwt = require('jsonwebtoken');
 const { config, tokens } = require('../config');
+const Token = require('../database/models/token.model');
 
 //! Don't declare it ASYNC or it will return a Promise instead of a token string !
 function generateToken(userId, expires, type, secret = config.JWT.SECRET) {

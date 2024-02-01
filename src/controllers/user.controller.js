@@ -20,10 +20,11 @@ const update = catchAsync(async (req, res) => {
 	return res.status(http.OK).send(user);
 });
 
-const destroy = catchAsync(async (req, res) => {
+const remove = catchAsync(async (req, res) => {
 	const user = await user.deleteById(req.params.uid);
 	return res.status(http.OK).send(user);
 });
+
 const queryAll = catchAsync(async (req, res) => {
 	const filter = pickProperties(req.query, ['name', 'role']);
 	const options = pickProperties(req.query, ['sortBy', 'limit', 'page']);
@@ -31,4 +32,4 @@ const queryAll = catchAsync(async (req, res) => {
 	return res.status(http.OK).send(users);
 });
 
-module.exports = { get, create, update, destroy, queryAll };
+module.exports = { get, create, update, remove, queryAll };

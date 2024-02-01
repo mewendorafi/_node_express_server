@@ -1,9 +1,9 @@
 const Joi = require('joi');
 const http = require('http-status');
-const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
+const pick = require('../utils/pickObjectProperties');
 
-const validate = schema => (req, res, next) => {
+const validateSchema = schema => (req, res, next) => {
 	const validSchema = pick(schema, ['params', 'query', 'body']);
 	const object = pick(req, Object.keys(validSchema));
 	const { value, error } = Joi.compile(validSchema)
@@ -18,4 +18,4 @@ const validate = schema => (req, res, next) => {
 	return next();
 };
 
-module.exports = validate;
+module.exports = validateSchema;

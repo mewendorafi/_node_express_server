@@ -1,14 +1,13 @@
-const mongoose = require('mongoose');
 const app = require('./app');
+const { set, connect } = require('mongoose');
 const { config, logger } = require('./config');
 
 // If strictQuery is set to true, mongoose removes any query conditions with a value of undefined.
 // This is to avoid unintended CRUD operations when using variables in queries.
-mongoose.set('strictQuery', true);
+set('strictQuery', true);
 
 let server = null;
-mongoose
-	.connect(config.MONGOOSE.URL)
+connect(config.MONGOOSE.URL)
 	.then(() => {
 		logger.info(`[DATABASE] Connected to Mongo | ${config.MONGOOSE.DB_NAME}`);
 		server = app.listen(config.PORT, () => {

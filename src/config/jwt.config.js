@@ -1,7 +1,7 @@
-const { Strategy, ExtractJwt } = require('passport-jwt');
 const { JWT } = require('../config/env.config');
+const User = require('../database/models');
+const { Strategy, ExtractJwt } = require('passport-jwt');
 const { TOKEN_TYPES } = require('../config/tokens.config');
-const { UserModel } = require('../database/models');
 
 const options = {
 	secretOrKey: JWT.SECRET,
@@ -14,7 +14,7 @@ const verify = async (payload, done) => {
 		if (payload.type !== TOKEN_TYPES.ACCESS) {
 			throw new Error('Invalid token type');
 		}
-		const user = await UserModel.findById(payload.sub);
+		const user = await User.findById(payload.sub);
 		if (!user) {
 			return done(null, false);
 		}

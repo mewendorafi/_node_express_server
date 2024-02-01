@@ -1,9 +1,9 @@
+const { tokens } = require('../config');
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const Token = require('../database/models/token.model');
 const userService = require('../services/user.service');
 const { verifyToken, generateAuthTokens } = require('../services/token.service');
-const { tokens } = require('../config');
 
 async function login(email, password) {
 	const user = await userService.queryByEmail(email);
