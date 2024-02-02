@@ -5,18 +5,13 @@ const { ROLE_RIGHTS } = require('../config/roles.config');
 
 function verifyCallback(req, resolve, reject, requiredRights) {
 	return async (err, user, info) => {
-		console.log(err, info, user);
-		if (err || info || !user) {
-			return reject(new ApiError(http.UNAUTHORIZED, 'Please authenticate'));
-		}
+		if (err || info || !user) return reject(new ApiError(http.UNAUTHORIZED, 'Please authenticate'));
 		req.user = user;
 
 		if (requiredRights.length) {
 			const userRights = ROLE_RIGHTS.get(user.role);
 			const hasRequiredRights = requiredRights.every(requiredRight => userRights.includes(requiredRight));
-			if (!hasRequiredRights && req.headers.id !== user.id) {
-				return reject(new ApiError(http.FORBIDDEN, 'Forbidden'));
-			}
+			if (!hasRequiredRights && req.params.uid !== user.id) return reject(new ApiError(http.FORBIDDEN, 'Forbidden'));
 		}
 
 		resolve();
