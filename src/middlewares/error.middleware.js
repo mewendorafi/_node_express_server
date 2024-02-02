@@ -1,7 +1,7 @@
 const http = require('http-status');
-const { Error: MongooseError } = require('mongoose');
 const ApiError = require('../utils/ApiError');
 const { config, logger } = require('../config');
+const { Error: MongooseError } = require('mongoose');
 
 const errorConverter = (err, req, res, next) => {
 	let error = err;
@@ -29,9 +29,7 @@ const errorHandler = (err, req, res, next) => {
 		...(config.ENV === 'development' && { stack: err.stack }),
 	};
 
-	if (config.ENV === 'development') {
-		logger.error(err);
-	}
+	if (config.ENV === 'development') logger.error(err);
 
 	res.status(statusCode).send(response);
 };

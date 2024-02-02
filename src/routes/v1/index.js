@@ -17,6 +17,15 @@ router.get('/', async (req, res) => {
 				<h1> Node Server </h1>
 				<h2> Built With Express </h2>
 				<h2> Deployed On Vercel </h2>
+				<h3>Available routes:</h3>
+				<h4>POST /auth/{{[register, login, logout, refresh-tokens]}}</h4>
+				<h4>POST /users</h4>
+				<h4>GET /users/all</h4>
+				<h4>GET /users/:uid</h4>
+				<h4>PATCH /users/:uid</h4>
+				<h4>DELETE /users/:uid</h4>
+				<p>...and more to come...</p>
+				<p>Try out requests with any API testing tool</p>
 			</body>
 		</html>
 	`);
@@ -24,18 +33,18 @@ router.get('/', async (req, res) => {
 
 const DEFAULT_ROUTES = [
 	{
-		path: '/auth',
+		path_prefix: '/auth',
 		route: authRouter,
 	},
 	{
-		path: '/users',
+		path_prefix: '/users',
 		route: usersRouter,
 	},
 	// extend ...
 ];
 
 DEFAULT_ROUTES.forEach(route => {
-	router.use(route.path, route.route);
+	router.use(route.path_prefix, route.route);
 });
 
 module.exports = router;
