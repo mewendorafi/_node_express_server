@@ -9,7 +9,6 @@ const options = {
 };
 
 const verify = async (payload, done) => {
-	console.log(payload)
 	try {
 		if (payload.type !== TOKEN_TYPES.ACCESS) {
 			throw new Error('Invalid token type');
