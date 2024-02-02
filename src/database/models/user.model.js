@@ -55,17 +55,19 @@ userSchema.plugin(toJSON);
 // pagination feature on requests
 userSchema.plugin(paginate);
 
+// statics are for actions pertaining to multiple docs
 userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
 	const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
 	return !!user;
 };
 
+// methods are for actions pertaining to a single doc
 userSchema.methods.isPasswordMatch = async function (password) {
 	const user = this;
 	return bcrypt.compare(password, user.password);
 };
 
-// pre-save function to execute before every user save
+// pre-save function to be executed before every user save
 userSchema.pre('save', async function (next) {
 	const user = this;
 	if (user.isModified('password')) {
