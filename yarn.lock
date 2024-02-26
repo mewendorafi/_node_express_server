@@ -1628,9 +1628,9 @@ fn.name@1.x.x:
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
 follow-redirects@^1.14.0:
-  version "1.15.3"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.3.tgz#fe2f3ef2690afce7e82ed0b44db08165b207123a"
-  integrity sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==
+  version "1.15.4"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.4.tgz#cdc7d308bf6493126b17ea2191ea0ccf3e535adf"
+  integrity sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==
 
 forwarded@0.2.0:
   version "0.2.0"
@@ -2225,10 +2225,10 @@ netmask@^2.0.2:
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-2.0.2.tgz#8b01a07644065d536383835823bc52004ebac5e7"
   integrity sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==
 
-nodemailer@^6.3.1:
-  version "6.9.5"
-  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.5.tgz#eaeae949c62ec84ef1e9128df89fc146a1017aca"
-  integrity sha512-/dmdWo62XjumuLc5+AYQZeiRj+PRR8y8qKtFCOyuOl1k/hckZd8durUUHs/ucKx6/8kN+wFxqKJlQ/LK/qR5FA==
+nodemailer@^6.9.9:
+  version "6.9.9"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.9.tgz#4549bfbf710cc6addec5064dd0f19874d24248d9"
+  integrity sha512-dexTll8zqQoVJEZPwQAKzxxtFn0qTnjdQTchoU6Re9BUUGBJiOy3YMn/0ShTW6J5M0dfQ1NeDeRTTl4oIWgQMA==
 
 nodemon@^2.0.22:
   version "2.0.22"

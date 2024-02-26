@@ -28,7 +28,7 @@ async function updateById(uid, body) {
 		throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
 	}
 	if (body.email && (await User.isEmailTaken(body.email, uid))) {
-    throw new ApiError(httpStatusStatus.BAD_REQUEST, 'Email already taken');
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
 	Object.assign(user, body);
 	await user.save();
