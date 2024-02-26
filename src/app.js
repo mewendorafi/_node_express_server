@@ -14,7 +14,7 @@ const ApiError = require('./utils/ApiError.js');
 const { config, jwt: jwtConfig } = require('./config');
 const { errorMiddleware, authLimiterMiddleware } = require('./middlewares');
 
-const indexRouter = require('./routes/v1/index.js');
+const routerIndex = require('./routes');
 
 const app = express();
 
@@ -55,7 +55,7 @@ if (config.ENV === 'production') {
 
 //! Call the router before calling the error middlewares, otherwise API requests won't work
 // API routes
-app.use('/', indexRouter);
+app.use('/v1', routerIndex);
 
 // Catch 404 and forward to error handler for any unknown API request
 app.use((req, res, next) => {
