@@ -55,7 +55,7 @@ if (config.ENV === 'production') {
 
 //! Call the router before calling the error middlewares, otherwise API requests won't work
 // API routes
-app.use('/v1', routerIndex);
+app.use('/', routerIndex);
 
 // Catch 404 and forward to error handler for any unknown API request
 app.use((req, res, next) => {
