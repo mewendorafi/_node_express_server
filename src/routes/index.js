@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
+const { Router } = require('express');
+const router = Router()
 const authRouter = require('./auth.route.js');
-const usersRouter = require('./user.route.js');
+const userRouter = require('./user.route.js');
 
 // Index View
 router.get('/', async (req, res) => {
@@ -33,18 +33,18 @@ router.get('/', async (req, res) => {
 
 const DEFAULT_ROUTES = [
 	{
-		path_prefix: '/auth',
-		route: authRouter,
+		segment: '/auth',
+		router: authRouter,
 	},
 	{
-		path_prefix: '/users',
-		route: usersRouter,
+		segment: '/user',
+		router: userRouter,
 	},
 	// extend ...
 ];
 
-DEFAULT_ROUTES.forEach(route => {
-	router.use(route.path_prefix, route.route);
+DEFAULT_ROUTES.forEach(path => {
+	router.use(path.segment, path.router);
 });
 
 module.exports = router;

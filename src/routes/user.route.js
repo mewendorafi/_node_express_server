@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const { Router } = require('express');
+const router = Router();
 
-const user = require('../../controllers/user.controller');
-const auth = require('../../middlewares/auth.middleware');
+const user = require('../controllers/user.controller');
+const auth = require('../middlewares/auth.middleware');
 
 // When declaring "*" as the path, the callback function systematically executes before calling any route
 // Or, you can scope it to only some paths of the /users endpoint, like so: router.all('/path')

@@ -1,6 +1,7 @@
 {
 	"name": "node-express-server",
 	"version": "1.0.0",
+	"main": "src/server.js",
 	"private": true,
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development nodemon src/server.js",
